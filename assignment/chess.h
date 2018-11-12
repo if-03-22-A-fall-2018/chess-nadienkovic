@@ -1,32 +1,39 @@
 /*----------------------------------------------------------
- *				HTBLA-Leonding / Klasse: 2AHDV
+ *				HTBLA-Leonding / Klasse: 2AHIF
  * ---------------------------------------------------------
- * Exercise Number: 0
+ * Exercise Number: 07
  * Title:			chess.h
- * Author:			P. Bauer
- * Due Date:		October 15, 2014
+ * Author:			N. Bajim
+ * Due Date:		November 10, 2018
  * ----------------------------------------------------------
  * Description:
  * Basic chess functions.
  * ----------------------------------------------------------
  */
+ #include <stdbool.h>
+ #include <stdio.h>
+ //Enumerations
+enum  PieceType { Pawn, Rook, Knight, Bishop, Queen, King, NoPiece };
+enum  PieceColor { White, Black };
+enum  MoveType { NormalMove, CaptureMove };
 
- typedef struct ChessSquare 	ChessBoard [8][8];
- typedef char 	File;
- typedef int 	Rank;
-
-enum  	PieceType { Pawn, Rook, Knight, Bishop, Queen, King, NoPiece };
-enum  	PieceColor { White, Black }
-enum  	MoveType { NormalMove, CaptureMove }
+//Structs
 struct ChessPiece
 {
   enum PieceColor color;
-  enum PieceType 	type;
+  enum PieceType type;
 };
 struct ChessSquare
 {
   bool  is_occupied;
+  struct ChessPiece piece;
+
 };
+ typedef struct ChessSquare ChessBoard [8][8];
+ typedef char  File;
+ typedef int 	Rank;
+
+ //Functions
 bool 	is_piece (struct ChessPiece pc, enum PieceColor color, enum PieceType type);
 void 	init_chess_board (ChessBoard chess_board);
 struct ChessSquare * 	get_square (ChessBoard chess_board, File file, Rank rank);
